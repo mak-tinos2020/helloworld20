@@ -1,14 +1,29 @@
 pipeline {
     agent any 
     stages {
-      stage('Hello'){
+      stage('Build'){
         steps {
-          echo "Hello world"
-          
+          echo "Build step"
+          sleep 4
+        }
+        
+      }
+      stage('Test'){
+        steps {
+          echo "Test step"
+          sleep 5
+        }
+        
+      }
+      stage('deploy'){
+        steps {
+          echo "deploy war file"
+          sleep 10
         }
         
       }
       
+        
     }
 
 
