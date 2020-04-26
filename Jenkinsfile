@@ -24,6 +24,7 @@ pipeline {
         steps {
           echo "deploy war file"
           sleep 10
+          build 'mak17_CI'
         }
         
       }
