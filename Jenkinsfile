@@ -22,9 +22,7 @@ pipeline {
       }
       stage('deploy'){
         steps {
-          echo "deploy war file"
-          sleep 10
-          build 'mak17_CI'
+          sshPublisher(publishers: [sshPublisherDesc(configName: 'docker-hosts', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'cd /home/dockeruser ; docker build -t devop_text . ; docker run -d --name jenkins_container -p 8080:8080 devop_text', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: 'webapp/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
         }
         
       }
